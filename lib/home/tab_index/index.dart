@@ -5,19 +5,31 @@ import 'package:hook_up_rent/widget/common_swipper.dart';
 
 import 'index_recommond.dart';
 import 'info/index.dart';
+
 class TabIndex extends StatelessWidget {
   const TabIndex({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: SeachBar(),backgroundColor: Colors.white,),
+      appBar: AppBar(
+        title: SeachBar(
+          showLoaction: true,
+          showMap: true,
+          onSeach: (){
+            Navigator.of(context).pushNamed("search");
+          },
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: ListView(
         children: [
           CommonSwiper(),
           IndexNacigator(),
           IndexRecommond(),
-          Info(showTitle: true,)
+          Info(
+            showTitle: true,
+          )
           // Text("这是内容区")
         ],
       ),

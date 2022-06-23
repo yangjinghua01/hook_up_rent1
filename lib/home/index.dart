@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hook_up_rent/home/tab_index/index.dart';
 import 'package:hook_up_rent/home/tab_info/index.dart';
+import 'package:hook_up_rent/home/tab_profile/index.dart';
 import 'package:hook_up_rent/home/tab_seach/index.dart';
 import 'package:hook_up_rent/page_content.dart';
 
@@ -11,7 +12,7 @@ List<Widget> tabViewList = [
   TabIndex(),
   TabSearch(),
   TabINfo(),
-  PageContent("我的")
+  TabProfile(),
 ];
 //4个底部的bar
 List<BottomNavigationBarItem> barItemList = [

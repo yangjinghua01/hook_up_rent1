@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hook_up_rent/home/tab_seach/datalist.dart';
+import 'package:hook_up_rent/seach_bar/index.dart';
 import 'package:hook_up_rent/widget/room_list_item_widget.dart';
 
 class TabSearch extends StatefulWidget {
@@ -14,7 +15,14 @@ class _TabSearchState extends State<TabSearch> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Center(child: Text("tabSeach"),),),
+      appBar: AppBar(title: SeachBar(
+        showLoaction: true,
+        showMap: true,
+        inputValue: "",
+        onSeach: (){
+          Navigator.of(context).pushNamed("search");
+        },
+      ),),
       body: Column(
         children: [
           Container(

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hook_up_rent/home/tab_index/info/index.dart';
+import 'package:hook_up_rent/seach_bar/index.dart';
 
 class TabINfo extends StatefulWidget {
   const TabINfo({Key? key}) : super(key: key);
@@ -15,7 +16,9 @@ class _TabINfoState extends State<TabINfo> {
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('资讯tab'),
+          child: SeachBar(inputValue: "",onSeach: (){
+            Navigator.of(context).pushNamed("seach");
+          },),
         ),
       ),
       body: ListView(

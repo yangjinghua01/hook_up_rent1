@@ -36,12 +36,13 @@ class SeachBar extends StatefulWidget {
 class _SeachBarState extends State<SeachBar> {
   String _seachWord = '';
   late TextEditingController _controller;
-
+  late FocusNode _focus;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     _controller = TextEditingController(text: widget.inputValue);
+    _focus = FocusNode();
   }
 
   void _onClean() {
@@ -95,8 +96,14 @@ class _SeachBarState extends State<SeachBar> {
                 borderRadius: BorderRadius.circular(14.0)),
             margin: EdgeInsets.only(right: 10.0),
             child: TextField(
-              onTap: () {
-                widget.onSeach;
+              focusNode: _focus,
+              onTap:() {
+                if (widget.onSeachSubmit == null) {
+                  _focus.unfocus(); // 不是搜索页则失去焦点
+                }
+                if (widget.onSeach != null) {
+                  widget.onSeach!();
+                }
               },
               onSubmitted: widget.onSeachSubmit,
               controller: _controller,
