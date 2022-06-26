@@ -2,8 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hook_up_rent/widget/common_floating_button.dart';
 import 'package:hook_up_rent/widget/common_form_item.dart';
+import 'package:hook_up_rent/widget/common_image_picker.dart';
 import 'package:hook_up_rent/widget/common_radio_form_item.dart';
+import 'package:hook_up_rent/widget/common_select_form_item.dart';
 import 'package:hook_up_rent/widget/commont_title.dart';
+
+import '../room_appliance.dart';
 
 class RoomAddPage extends StatefulWidget {
   const RoomAddPage({Key? key}) : super(key: key);
@@ -76,11 +80,66 @@ class _RoomAddPageState extends State<RoomAddPage> {
               setState(() => rentType = index!);
             },
           ),
-
+          CommonRadioFormItem(
+            label: '装修',
+            options: const ['精装', '简装'],
+            value: decorationType,
+            onChange: (index) {
+              setState(() => decorationType = index!);
+            },
+          ),
+          CommonSelectFormItem(
+            label: '户型',
+            value: roomType,
+            onChange: (val) {
+              setState(() => roomType = val!);
+            },
+            options: const ['一室', '二室', '三室', '四室'],
+          ),
+          CommonSelectFormItem(
+            label: '楼层',
+            value: floor,
+            onChange: (val) {
+              setState(() => floor = val!);
+            },
+            options: const ['高楼层', '中楼层', '低楼层'],
+          ),
+          CommonSelectFormItem(
+            label: '朝向',
+            value: oriented,
+            onChange: (val) {
+              setState(() => oriented = val!);
+            },
+            options: const ['东', '南', '西', '北'],
+          ),
           CommonTitle(title: "房屋头像"),
+          const CommonImagePicker(),
           CommonTitle(title: "房屋标题"),
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: TextField(
+              controller: titleController,
+              decoration: const InputDecoration(
+                hintText: '请输入标题（例如：整组，小区名 2 室 2000 元）',
+                border: InputBorder.none,
+              ),
+            ),
+          ),
           CommonTitle(title: "房屋配置"),
-          CommonTitle(title: "房屋描述")
+          RoomAppliance((data) {}),
+          CommonTitle(title: "房屋描述"),
+          Container(
+            margin: const EdgeInsets.only(bottom: 100),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: TextField(
+              controller: descController,
+              maxLines: 5,
+              decoration: const InputDecoration(
+                hintText: '请输入房屋描述信息',
+                border: InputBorder.none,
+              ),
+            ),
+          ),
         ],
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,

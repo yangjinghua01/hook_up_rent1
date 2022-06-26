@@ -33,6 +33,7 @@ dependencies:
   flutter_swiper: "^1.1.6"
   cached_network_image: "^3.2.0"
   fluttertoast: "^7.0.2"
+  image_picker: ^0.8.5 # 图片选择
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -60,7 +61,10 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
-
+  fonts:
+    - family: CommonIcon
+      fonts:
+        - asset: static/fonts/iconfont.ttf
   # To add assets to your application, add an assets section, like this:
   assets:
     - static/images/home_index_navigator_total.png
