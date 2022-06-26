@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:hook_up_rent/home/index.dart';
 import 'package:hook_up_rent/login.dart';
 import 'package:hook_up_rent/register.dart';
+import 'package:hook_up_rent/room_add/index.dart';
 import 'package:hook_up_rent/room_detail/index.dart';
+import 'package:hook_up_rent/room_manage/index.dart';
+import 'package:hook_up_rent/setting.dart';
 
 import 'not_found.dart';
 
@@ -13,7 +16,9 @@ class Routes {
   static String login = '/login';
   static String roomDetal = '/room/:roomId';
   static String register = '/register';
-
+  static String setting = '/setting';
+  static String roomManager = '/roomManager';
+  static String roomAdd ='room_add';
 //2.定义路由处理函数
   static Handler _homeHandler =
       Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
@@ -35,13 +40,27 @@ class Routes {
   Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
     return RegisterPage();
   });
-
+  static Handler _settingHandler =
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return Setting();
+  });
+  static Handler _roomManagerHandler =
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return RoomManagerPage();
+  });
+  static Handler _roomAddHandler =
+  Handler(handlerFunc: (BuildContext context, Map<String, dynamic> params) {
+    return RoomAddPage();
+  });
 //3。编写configureRouter 关联路由名称和处理函数
   static void configureRoutes(FluroRouter router) {
     router.define(home, handler: _homeHandler);
     router.define(login, handler: _loginHandler);
+    router.define(setting, handler: _settingHandler);
     router.define(roomDetal, handler: _roomDetailHandler);
     router.define(register, handler: _registerHandler);
+    router.define(register, handler: _registerHandler);
+    router.define(roomAdd, handler: _roomAddHandler);
     router.notFoundHandler=_notFoundHandler;
   }
 }

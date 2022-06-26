@@ -13,7 +13,7 @@ class TabProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("wode"),
+        title: Text("我的"),
         actions: [
           IconButton(
               onPressed: () {
