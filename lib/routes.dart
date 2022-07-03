@@ -15,7 +15,7 @@ class Routes {
 //  1.定义路由名称
   static String home = '/';
   static String login = '/login';
-  static String roomDetal = '/room/:roomId';
+  static String roomDetal = '/roomDetail/:roomId';
   static String register = '/register';
   static String setting = '/setting';
   static String roomManager = '/roomManager';
